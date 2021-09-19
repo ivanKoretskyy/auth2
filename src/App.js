@@ -1,25 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import { Route, Switch } from 'react-router-dom';
+import { Home } from './Home/Home';
+import Profile from './Profile/Profile';
+import { Nav } from './Nav/Nav';
+import React from 'react';
+import { Auth } from './Auth/Auth';
+import { withRouter } from 'react-router';
+import Callback from './Callback/Callback';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.auth = new Auth(props.history)
+  }
+  render() {
+    return (
+      <div className="App">
+        <Nav auth={this.auth}/>
+       <Switch>
+         <Route path="/profile" component={Profile}/>
+         <Route path="/callback" render={props => (<Callback auth={this.auth} {...props}/>)} exact={true}/>
+         <Route path="/" render={props => (<Home auth={this.auth} {...props}/>)} exact={true}/>
+       </Switch>
+      </div>
+    );
+  }
+  
 }
 
-export default App;
+export default withRouter(App);
