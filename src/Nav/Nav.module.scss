@@ -1,0 +1,33 @@
+.navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px;
+}
+
+.pages {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0 20px;
+  &.selected {
+    color: hotpink;
+  }
+  &:hover {
+    background-color: gray;
+    color: white;
+  }
+}
+
+.rightSide {
+  display: flex;
+}

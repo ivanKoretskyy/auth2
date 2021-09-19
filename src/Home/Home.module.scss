@@ -1,0 +1,15 @@
+.link {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0 20px;
+  &.selected {
+    color: hotpink;
+  }
+  &:hover {
+    background-color: gray;
+    color: white;
+  }
+}
