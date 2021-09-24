@@ -11,6 +11,8 @@ export const Nav = (props) => {
       <div className={s.pages}>
         <NavLink to="/" exact={true} className={s.link} activeClassName={s.selected}>Home</NavLink>
         <NavLink to="/profile" className={s.link} activeClassName={s.selected}>Profile</NavLink>
+        <NavLink to="/public" className={s.link} activeClassName={s.selected}>Public</NavLink>
+        <NavLink to="/private" className={s.link} activeClassName={s.selected}>Private</NavLink>
       </div>
      
       <div className={s.rightSide}>
