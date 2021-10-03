@@ -10,6 +10,7 @@ import { withRouter } from 'react-router';
 import Callback from './Callback/Callback';
 import { Public } from './Public/Public';
 import { Private } from './Private/Private';
+import { Courses } from './Courses/Courses';
 
 class App extends React.Component {
   constructor(props) {
@@ -29,11 +30,18 @@ class App extends React.Component {
          <Route path="/callback" render={props => (<Callback auth={this.auth} {...props}/>)} exact={true}/>
          <Route path="/" render={props => (<Home auth={this.auth} {...props}/>)} exact={true}/>
          <Route path="/public" component={Public}/>
-                  <Route path="/private"
+          <Route
+            path="/private"
             render={props => this.auth.isAuthenticated()
               ? <Private auth={this.auth} {...props} />
               : <Redirect to="/"/>
-              }/>
+            }/>
+          <Route
+            path="/courses"
+            render={props => (this.auth.isAuthenticated() && this.auth.userHasScope(['read:courses']))
+              ? <Courses auth={this.auth} {...props} />
+              : <Redirect to="/"/>
+            }/>
        </Switch>
       </div>
     );
